@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 22ed265568f35c6418ae2f8970de0643
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BombInfo: {instanceID: 0}
+  - BombModule: {instanceID: 0}
+  - KMAudio: {instanceID: 0}
+  - RedButton: {instanceID: 0}
+  - BlueButton: {instanceID: 0}
+  - GreenButton: {instanceID: 0}
+  - YellowButton: {instanceID: 0}
+  - LeftArrow: {instanceID: 0}
+  - RightArrow: {instanceID: 0}
+  - Counter: {instanceID: 0}
+  - simon: {instanceID: 0}
+  - talk: {instanceID: 0}
+  - phrases: {instanceID: 0}
+  - colors: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
