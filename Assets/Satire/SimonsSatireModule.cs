@@ -62,20 +62,19 @@ public class SimonsSatireModule : MonoBehaviour
 		Debug.Log ("[Simon's Satire] Bomb information gathered.");
 
 		//DETERMINING RANDOM PHRASES (and ensuring they are different)
-		System.Random rng = new System.Random ();
-		int num1 = rng.Next (numPhrases-1);
+		int num1 = UnityEngine.Random.Range(0, numPhrases);
 
-		int num2 = rng.Next (numPhrases-1);
+		int num2 = UnityEngine.Random.Range(0, numPhrases);
 		while (num2 == num1) {
-			num2 = rng.Next (numPhrases-1);
+			num2 = UnityEngine.Random.Range(0, numPhrases);
 		}
 
-		int num3 = rng.Next (numPhrases-1);
+		int num3 = UnityEngine.Random.Range(0, numPhrases);
 		while (num3 == num2 || num3 == num1) {
-			num3 = rng.Next (numPhrases-1);
+			num3 = UnityEngine.Random.Range(0, numPhrases);
 		}
 
-		/*num1 = 471;
+		/*num1 = 410;
 		num2 = 1;
 		num3 = 2;*/
 			
