@@ -1,8 +1,10 @@
-﻿<Properties StartupItem="Simon's Satire.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Satire\SimonsSatireModule.cs">
     <Files>
-      <File FileName="Assets\Satire\SimonsSatireModule.cs" Line="30" Column="3" />
+      <File FileName="Assets\Satire\SimonsSatireModule.cs" Line="328" Column="52" />
+      <File FileName="Assets\Satire\phrases.txt" Line="500" Column="57" />
+      <File FileName="Assets\Satire\colors.txt" Line="500" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
