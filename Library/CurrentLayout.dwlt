@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 342}
   m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
-  controlID: 62
+  controlID: 56
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 342}
   m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
-  controlID: 63
+  controlID: 57
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 98
+  controlID: 34
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -360,19 +360,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Satire
+    - Assets/Satire/Sounds
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Satire
+  - Assets/Satire/Sounds
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Sean\Programming\Unity\KTANE Mods\Simons-Satire
+  m_LastProjectPath: C:\Users\SeanPC\Programming\Unity\KTANE Mods\Simon's Satire
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 9c4e0000
-    m_LastClickedID: 20124
-    m_ExpandedIDs: 00000000744e00007a4e00008a4e0000904e0000c44e0000e64e0000fa4e0000164f0000484f0000584f0000824f000082500000fe500000045100005c510000aa51000000ca9a3bffffff7f
+    m_SelectedIDs: 0cdf0100
+    m_LastClickedID: 122636
+    m_ExpandedIDs: 00000000724e0000784e0000884e00008e4e00009a4e0000c24e0000e44e0000f84e0000144f0000464f0000564f0000824f000082500000fe500000045100005c510000aa51000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -400,7 +400,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000744e00007a4e00008a4e0000904e0000c44e0000e64e0000fa4e0000164f0000484f0000584f0000824f000082500000fe500000045100005c510000aa510000
+    m_ExpandedIDs: 00000000724e0000784e0000884e00008e4e0000c24e0000e44e0000f84e0000144f0000464f0000564f0000824f000082500000fe500000045100005c510000aa510000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -425,8 +425,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: ae070000
-    m_LastClickedInstanceID: 1966
+    m_SelectedInstanceIDs: 6e61ffff
+    m_LastClickedInstanceID: -40594
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000062e0000722e0000000000003c090000c062fbff0c2e0000ba2d0000842e0000522a000008330000be310000
     m_RenameOverlay:
@@ -482,7 +482,7 @@ MonoBehaviour:
     width: 387
     height: 926
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 439.95508}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 160
@@ -518,9 +518,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ae070000
-    m_LastClickedID: 0
-    m_ExpandedIDs: c660ffff00000000
+    m_SelectedIDs: 6e61ffff
+    m_LastClickedID: -40594
+    m_ExpandedIDs: 52f5feff7ef8feff8c61ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -568,7 +568,7 @@ MonoBehaviour:
     x: 381
     y: 92
     width: 1148
-    height: 552
+    height: 549
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
   lastFramingTime: 23285.4681412
@@ -664,8 +664,8 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 0
-    m_VSlider: 0
+    m_HSlider: 1
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoom: 0
@@ -677,18 +677,18 @@ MonoBehaviour:
       y: 17
       width: 1148
       height: 532
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 574, y: 266}
+    m_Scale: {x: 1.1930392, y: 1.1930392}
+    m_Translation: {x: 550.0632, y: 253.06633}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -574
-      y: -266
-      width: 1148
-      height: 532
+      x: -461.06046
+      y: -212.11905
+      width: 962.24835
+      height: 445.91998
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
