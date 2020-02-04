@@ -175,9 +175,18 @@ public class SimonsSatireModule : MonoBehaviour
 				return "Yellow";
 			} else if (special.Equals ("Special9")) {
 				//special case 9, if combined letters from all indicators share a letter with "SPANISH", "FRENCH", and "JAPANESE", press green, otherwise press red
-				string indicators = BombInfo.GetIndicators().All;
+				int count = 0;
+				string usedLetters = "", wordLetters = "SPANIHFRECJ"; //spanish french and japanese without duplicate letters
+				foreach (char letter in BombInfo.GetIndicators().Join("")) {
+					if (wordLetters.Contains (letter) && !usedLetters.Contains (letter)) {
+						count++;
+						if(count == 3)
+							return "Green";
+						usedLetters += letter;
+					}
+				}
 
-				return "Blue";
+				return "Red";
 			} else if (special.Equals ("Special10")) {
 				//special case 10
 				return "Blue";
