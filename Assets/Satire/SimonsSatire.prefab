@@ -273,9 +273,6 @@ GameObject:
   - component: {fileID: 114102817704817354}
   - component: {fileID: 114997367678643698}
   - component: {fileID: 114032837086436596}
-  - component: {fileID: 114118458500968384}
-  - component: {fileID: 114293498213356024}
-  - component: {fileID: 114360650426181842}
   m_Layer: 0
   m_Name: SimonsSatire
   m_TagString: Untagged
@@ -1575,7 +1572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BombInfo: {fileID: 114102817704817354}
   BombModule: {fileID: 114274291835108616}
-  KMAudio: {fileID: 114997367678643698}
+  Audio: {fileID: 114997367678643698}
   RedButton: {fileID: 114501169121425640}
   BlueButton: {fileID: 114028520362819660}
   GreenButton: {fileID: 114802982903671294}
@@ -1588,10 +1585,6 @@ MonoBehaviour:
   colors: {fileID: 4900000, guid: 9ac9c906b31a0d548a0630c7c833b6da, type: 3}
   phraseText: {fileID: 102703969254082468}
   pageText: {fileID: 102448278731426726}
-  buttonPress: {fileID: 0}
-  strike: {fileID: 0}
-  win1: {fileID: 0}
-  win2: {fileID: 0}
 --- !u!114 &114102817704817354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1603,20 +1596,6 @@ MonoBehaviour:
   m_Script: {fileID: 2144496390, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114118458500968384
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1589811095332966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1427759265, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OverrideEffect: 0
-  AudioClip: {fileID: 8300000, guid: 568255a83654da341a24992e0ff89489, type: 3}
-  AdditionalVariants: []
 --- !u!114 &114123124500295388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1722,20 +1701,6 @@ MonoBehaviour:
   ModuleType: Simon'sSatire
   ModuleDisplayName: Simon's Satire
   RequiresTimerVisibility: 1
---- !u!114 &114293498213356024
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1589811095332966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1427759265, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OverrideEffect: 5
-  AudioClip: {fileID: 8300000, guid: d220c6d697d1de049b6a6f26f938ce9e, type: 3}
-  AdditionalVariants: []
 --- !u!114 &114314907663329504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1749,21 +1714,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighlightScale: {x: 1, y: 1, z: 1}
   OutlineAmount: 0
---- !u!114 &114360650426181842
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1589811095332966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1427759265, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OverrideEffect: 13
-  AudioClip: {fileID: 8300000, guid: 44a572d807fcf174eb2cf7716464e418, type: 3}
-  AdditionalVariants:
-  - {fileID: 8300000, guid: d9d8f09aa0c03954db3514fff36eb442, type: 3}
 --- !u!114 &114378575571114426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1850,7 +1800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/Text Shader
+  - GUI/KT 3D Text
 --- !u!114 &114500391019285090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2068,7 +2018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/Text Shader
+  - GUI/KT 3D Text
 --- !u!114 &114997367678643698
 MonoBehaviour:
   m_ObjectHideFlags: 1

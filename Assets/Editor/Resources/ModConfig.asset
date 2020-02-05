@@ -14,7 +14,8 @@ MonoBehaviour:
   id: 42069
   title: Simon's Satire
   author: PhoenixAki
-  description: 
-  version: 
+  description: "Simon has been forced to listen to you repeat some \"K\"razy phrases
+    to your manual expert all day. He wants a turn.\r\n"
+  version: 1.0
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 2c5dd59105e76a34bb3abd168c13811a, type: 3}

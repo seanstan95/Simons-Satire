@@ -53,16 +53,16 @@ This might be a phrase from krazy talk.
 This might be a phrase from insane talk.
 This might be a phrase from insane talc with a c.
 This might be a phrase from insane talc with a k.
-Wait, this time the inputs below look like the buttons from simon screams.
-Wait, this time the inputs below look like the buttons from simon selects.
-Wait, this time the inputs below look like the buttons from simon simons.
-Wait, this time the inputs below look like the buttons from simon sings.
-Wait, this time the inputs below look like the buttons from simon cowell. 
-Wait, this time the the inputs below look like the buttons from simon screams.
-Wait, this time the the inputs below look like the buttons from simon selects.
-Wait, this time the the inputs below look like the buttons from simon simons.
-Wait, this time the the inputs below look like the buttons from simon sings.
-Wait, this time the the inputs below look like the buttons from simon cowell. 
+Wait, this time the inputs above look like the buttons from simon screams.
+Wait, this time the inputs above look like the buttons from simon selects.
+Wait, this time the inputs above look like the buttons from simon simons.
+Wait, this time the inputs above look like the buttons from simon sings.
+Wait, this time the inputs above look like the buttons from simon cowell. 
+Wait, this time the the inputs above look like the buttons from simon screams.
+Wait, this time the the inputs above look like the buttons from simon selects.
+Wait, this time the the inputs above look like the buttons from simon simons.
+Wait, this time the the inputs above look like the buttons from simon sings.
+Wait, this time the the inputs above look like the buttons from simon cowell.
 Irish Wristwatch. But it repeats three times.
 Irish Wristwatch. Irish wristwatch. Irish Wristwatch.
 *clap clap* Quote: Irish Wristwatch. Irish wristwatch. Irish Wristwatch. End quote *clap clap*.
@@ -490,10 +490,10 @@ Hey Benjamin, Sia.
 Hey Benny, Sia.
 I activate the magic card, Pot of Greed! This will allow me to draw two new cards! And look who I just drew! Exodia.....
 In adventure game we are fighting EXODIA. We have a broadsword, a nasty knife, and a magic orb. Our stats do not matter, all we can do is hide and avoid obliteration.
-You put your left arm in, you put your right arm out, you put your left leg in and you shake your pot of greed all about. You draw your last two cards and turn yourself around, Exodia o-blit-er-ate!
+You put your left arm in,\nyou put your right arm\nout, you put your left\nleg in and you shake your\npot of greed all about.\nYou draw your last two\ncards and turn yourself\naround, Exodia o-blit-er-ate!
 You're trapped, and the doors are all locked. You face the brothers, Para-Dox! This is not Zexal, there is no Utopia, but guess who we have? The Unstoppable Exodia!
 Go fish, you say? Foolish, Yugi boy… While you might think that the objective of this game is to get RID of your hand, it doesn’t matter if you draw… THE UNSTOPPABLE EXODIA!!!
-EARTH! FIRE! WIND! WATER! HEART! By your powers combined.. I AM.. EXODIA! OBLITERATE!
+EARTH! FIRE! WIND!\nWATER! HEART! By your\npowers combined.. I AM..\nEXODIA! OBLITERATE!
 What did Yugi say when he drew the five pieces of political evidence? EXODIA - WATERGATE!!!
 What do you say to a five piece yugioh monster that has  become a judge? EXODIA! INCARCERATE! 
 What do you say to a five piece yugioh monster that has become bilingual? EXODIA! COMMUNICATE! 

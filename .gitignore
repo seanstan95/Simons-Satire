@@ -1,3 +1,11 @@
 /[Bb]uild/
 /.vs/
 /Temp/
+/ProjectSettings/
+/Library/
+/UnityPackageManager/
+/obj/
+
+*.csproj
+*.sln
+*.userprefs
