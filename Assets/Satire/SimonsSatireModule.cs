@@ -8,48 +8,45 @@ using KModkit;
 
 public class SimonsSatireModule : MonoBehaviour
 {
+	public static int number;
     public KMBombInfo BombInfo;
     public KMBombModule BombModule;
     public KMAudio Audio;
     public KMSelectable RedButton, BlueButton, GreenButton, YellowButton, LeftArrow, RightArrow;
 	public TextAsset simon, talk, phrases, colors;
     public TextMesh phraseText, pageText;
-	private bool active = true, specialCase = false, special10 = false, valid = false;
-	private int sequenceNum = 0, phase, count;
-	private int[] nums = new int[3];
-	private string currentPhrase, special = "", win = "";
+
+	private bool active = true, specialCase = false, special10 = false, valid = false, special = false;
+	private int sequenceNum = 0, phase, count, column;
+	private List<int> nums = new List<int>();
+	private string currentPhrase, win = "";
 	private string[] inputs = new string[3];
 	private List<string> phrasesList = new List<string>(), talkModules = new List<string>(), simonModules = new List<string>(), unformattedPhrases = new List<string>();
 	private List<string[]> colorsList = new List<string[]>();
 
     protected void Start()
     {
-		Debug.Log ("[Simon's Satire] Initializing Simon's Satire.");
+		number++;
+		Debug.Log ("[Simon's Satire #" + number + "] Initializing Simon's Satire.");
 		RedButton.OnInteract += () => ButtonPress("Red");
 		BlueButton.OnInteract += () => ButtonPress("Blue");
 		GreenButton.OnInteract += () => ButtonPress("Green");
 		YellowButton.OnInteract += () => ButtonPress("Yellow");
-        LeftArrow.OnInteract += LeftPress;
-        RightArrow.OnInteract += RightPress;
+		LeftArrow.OnInteract += () => ArrowPress("Left", "1/2");
+		RightArrow.OnInteract += () => ArrowPress("Right", "2/2");
 
 		//PULLING BOMB AND PHRASE INFO
 		simonModules = readFile ("simon");
 		talkModules = readFile ("talk");
 		phrasesList = readFile ("phrases");
-		readFile ("colors");
-		string[] modules = BombInfo.GetModuleNames ().ToArray ();
+		readFile ("colors"); //don't need to save result since colors are directly added
+		List<string> modules = BombInfo.GetModuleNames ();
 
-		Debug.Log ("[Simon's Satire] Phrases loaded.");
-
-		int numSimonModules = 0, numTalkModules = 0, column = 0;
+		Debug.Log ("[Simon's Satire #" + number + "] Phrases loaded.");
 
 		//DETERMINING COLUMN
-		foreach (string name in modules) {
-			if (simonModules.Contains (name.ToLower()))
-				numSimonModules++;
-			if (talkModules.Contains (name.ToLower()))
-				numTalkModules++;
-		}
+		int numSimonModules = modules.Count(x => simonModules.Contains(x.ToLower()));
+		int numTalkModules = modules.Count (x => talkModules.Contains(x.ToLower ()));
 			
 		if (numSimonModules == 0 && numTalkModules == 0)
 			column = 0;
@@ -60,207 +57,53 @@ public class SimonsSatireModule : MonoBehaviour
 		else if (numSimonModules >= 1 && numTalkModules >= 1)
 			column = 3;
 
-		Debug.Log ("[Simon's Satire] Bomb information gathered.");
+		Debug.Log ("[Simon's Satire #" + number + "] Bomb information gathered.");
 
 		//DETERMINING RANDOM PHRASES + WIN SOUND
 		generateRandomStuff();
 
-		/*nums[0] = 498;
-		nums[1] = 0;
-		nums[2] = 1;*/
-
 		//DETERMINING COLOR INPUTS
 		for (int i = 0; i < 3; ++i) {
 			inputs [i] = getColor (nums [i], column);
-			Debug.Log ("[Simon's Satire] Phrase " + (i + 1) + ": " + unformattedPhrases [nums [i]]);
+			Debug.Log ("[Simon's Satire #" + number + "] Phrase " + (i + 1) + ": " + unformattedPhrases [nums [i]]);
 		}
-		Debug.Log ("[Simon's Satire] Color Sequence (column " + (column+1) + "): " + inputs[0] + " " + inputs[1] + " " + inputs[2]);
+		Debug.Log ("[Simon's Satire #" + number + "] Color Inputs (column " + (column+1) + "): " + inputs[0] + " " + inputs[1] + " " + inputs[2]);
 
-		//initial setup
+		//INITIAL SETUP
 		phase = 0;
 		currentPhrase = phrasesList [nums [phase]];
 		checkSplit(currentPhrase);
 
-		Debug.Log ("[Simon's Satire] Phase 1.");
-	}
-
-	private void generateRandomStuff(){
-		nums[0] = UnityEngine.Random.Range(0, phrasesList.Count-1); //only 0-498 to prevent conch shell phrase on phase 1
-
-		do{
-			nums[1] = UnityEngine.Random.Range(0, phrasesList.Count);
-		} while(nums[1] == nums[0]);
-
-		do{
-			nums[2] = UnityEngine.Random.Range(0, phrasesList.Count);
-		} while(nums[2] == nums[1] || nums[2] == nums[0]);
-
-		if (UnityEngine.Random.Range(1, 3) == 1)
-			win = "Win1";
-		else
-			win = "Win2";
-	}
-
-	private string getColor(int num, int column){
-		if (num < 490) { //not a special case
-			return colorsList [num][column];
-		} else {
-			count = 0; //reset here to save some space, used in special cases 2 3 and 9
-
-			switch (num) {
-			case 490: //special case 1, always green but only when 2 in timer
-				specialCase = true;
-				return "Green";
-			case 491: //special case 2, green if 3 indicator letters in CHAIN DESTRUCTION, red otherwise
-				return case2();
-			case 492: //special case 3, ports on each plate
-				return case3();
-			case 493: //special case 4, red if vanilla maze, 3d maze, morse-a-maze, or red arrows are on bomb, otherwise blue
-				string[] names = { "maze", "3d maze", "morse-a-maze", "red arrows", "a-maze-ing buttons", "maze³", "polyhedral maze", "module maze", "boolean maze", 
-					"rgb maze", "blind mazes", "the colored maze", "faulty rgb maze", "cruel boolean maze", "mazematics", "the labyrinth", "maze scrambler"};
-
-				if (BombInfo.GetModuleNames ().Any (x => names.Contains (x.ToLower ())))
-					return "Red";
-				else
-					return "Blue";
-			case 494: //special case 5, Y/G/R if EXODIA has a serial number char, otherwise blue when seconds read 00/any time if less than 1 minute
-				specialCase = true;
-
-				if (BombInfo.GetSerialNumberLetters ().Any (x => "EXODIA".Contains (x)))
-					return "YellowGreenRed";
-				else
-					return "Blue";
-			case 495: //special case 6, anything is valid if exactly 5 modules solved, otherwise anything but only when less than 2 minutes left
-				specialCase = true;
-				return "Any";
-			case 496: //special case 7, red if serial has a letter in CROOK, otherwise blue
-				if (BombInfo.GetSerialNumberLetters ().Any (x => "CROOK".Contains (x)))
-					return "Red";
-				else
-					return "Blue";
-			case 497: //special case 8, always yellow
-				return "Yellow";
-			case 498: //special case 9, green if indicator letters match with "SPANISH" "FRENCH" and "JAPANESE", otherwise red
-				return case9();
-			case 499: //special case 10, always do nothing
-				special10 = true;
-				return "Nothing";
-			default:
-				return "Unknown Error";
-			}
-		}
-	}
-
-	private string case2(){
-		ArrayList letters = new ArrayList ();
-
-		foreach (string indicator in BombInfo.GetIndicators()) {
-			foreach (char letter in indicator) {
-				if ("CHAINDESTRUO".Contains (letter) && !letters.Contains (letter)) {
-					count++;
-					letters.Add (letter);
-					if (count == 3) {
-						return "Green";
-					}
-				}
-			}
-		}
-
-		return "Red";
-	}
-
-	private string case3(){
-		count = BombInfo.GetPortPlates ().Max (x => x.Length);
-
-		if (count >= 2)
-			return "Green";
-		else if (count == 1)
-			return "Blue";
-		else if (count == 0)
-			return "Yellow";
-		else if (BombInfo.GetPortPlateCount () == 0)
-			return "Red";
-		
-			return "Error in special case 3";
-	}
-
-	private string case9(){
-		bool spanish = false, french = false, japanese = false;
-
-		foreach (char letter in BombInfo.GetIndicators().Join("")) {
-			if (!spanish && "SPANISH".Contains (letter))
-				spanish = true;
-			if (!french && "FRENCH".Contains (letter))
-				french = true;
-			if (!japanese && "JAPANESE".Contains (letter))
-				japanese = true;
-			if (spanish && french && japanese)
-				return "Green";
-		}
-
-		return "Red";
-	}
-
-	protected void Update(){
-		if (!active) {
-			return;
-		}
-
-		if (!phraseText.text.Equals (currentPhrase)) {
-			phraseText.text = currentPhrase;
-		}
-
-		if (nums [phase] >= 490 && phraseText.color != Color.blue) {
-			phraseText.color = Color.cyan;
-		} else if (nums [phase] < 490 && phraseText.color != Color.yellow) {
-			phraseText.color = Color.yellow;
-		}
-
-		if (special10 && BombInfo.GetSolvedModuleNames().Count == BombInfo.GetSolvableModuleNames().Count-1) {
-			BombModule.HandlePass ();
-			Audio.PlaySoundAtTransform(win, transform);
-			active = false;
-		}
-	}
-
-	private void checkSplit(string phrase){
-		if (phrasesList [nums [phase]].IndexOf("SPLIT") != -1) {
-			currentPhrase = currentPhrase.Substring (0, currentPhrase.IndexOf ("SPLIT"));
-			pageText.text = "1/2";
-		} else {
-			pageText.text = "";
-		}
+		Debug.Log ("[Simon's Satire #" + number + "] Phase 1.\nPhrase: " + unformattedPhrases[nums[phase]]);
 	}
 
 	private List<string> readFile(string filename){
-		MemoryStream stream;
+		StreamReader reader;
 		List<string> list = new List<string>();
 		string line;
 
 		if (filename.Equals ("phrases"))
-			stream = new MemoryStream (phrases.bytes);
+			reader = new StreamReader(new MemoryStream (phrases.bytes));
 		else if (filename.Equals ("talk"))
-			stream = new MemoryStream (talk.bytes);
+			reader = new StreamReader(new MemoryStream (talk.bytes));
 		else if (filename.Equals ("colors"))
-			stream = new MemoryStream (colors.bytes);
+			reader = new StreamReader(new MemoryStream (colors.bytes));
 		else if (filename.Equals ("simon"))
-			stream = new MemoryStream (simon.bytes);
+			reader = new StreamReader(new MemoryStream (simon.bytes));
 		else
 			return list;
-
-		StreamReader reader = new StreamReader (stream);
 
 		while ((line = reader.ReadLine ()) != null) {
 			if (filename.Equals ("colors")) {  //colors is an array list of lists as opposed to array list of strings, handle differently
 				colorsList.Add (line.Split(','));
 			} else {
-				if (filename.Equals ("phrases")) { //if phrase, add to unformatted and then format before adding to list
+				if (filename.Equals ("phrases")) { //if phrase, add to unformatted before formatting
 					unformattedPhrases.Add (line.Replace ("\\n", " ").Replace ("SPLIT", " "));
 					line = formatPhrase (line);
-				} else if (filename.Equals ("simon") || filename.Equals ("talk")) {
-					line = line.ToLower ();
+				} else {
+					line = line.ToLower (); //lowercase for module names to be safe on case sensitivity
 				}
-				
+
 				list.Add (line);
 			}
 		}
@@ -292,28 +135,155 @@ public class SimonsSatireModule : MonoBehaviour
 		return formatted;
 	}
 
+	private void generateRandomStuff(){
+		List<int> ranges = new List<int>() { phrasesList.Count - 1, phrasesList.Count, phrasesList.Count };
+		while (nums.Count < 3) {
+			int a = UnityEngine.Random.Range (0, ranges [nums.Count]);
+			if (!nums.Contains (a))
+				nums.Add(a);
+		}
+
+		if (UnityEngine.Random.Range(1, 3) == 1)
+			win = "Win1";
+		else
+			win = "Win2";
+	}
+
+	private string getColor(int num, int column){
+		if (num < 490) { //not a special case
+			return colorsList [num][column];
+		} else {
+			count = 0; //reset here to save some space, used in special cases 2 3 and 9
+			if (num == 490 || num == 494 || num == 495)
+				specialCase = true;
+
+			switch (num) {
+			case 490:
+				return "Green";
+			case 491:
+				return case2();
+			case 492:
+				return case3();
+			case 493:
+				string[] names = { "maze", "3d maze", "morse-a-maze", "red arrows", "a-maze-ing buttons", "maze³", "polyhedral maze", "module maze", "boolean maze", 
+					"rgb maze", "blind mazes", "the colored maze", "faulty rgb maze", "cruel boolean maze", "mazematics", "the labyrinth", "maze scrambler"};
+
+				if (BombInfo.GetModuleNames ().Any (x => names.Contains (x.ToLower ())))
+					return "Red";
+				else
+					return "Blue";
+			case 494:
+				if (BombInfo.GetSerialNumberLetters ().Any (x => "EXODIA".Contains (x)))
+					return "YGR";
+				else
+					return "Blue";
+			case 495:
+				return "Any";
+			case 496:
+				if (BombInfo.GetSerialNumberLetters ().Any (x => "CROOK".Contains (x)))
+					return "Red";
+				else
+					return "Blue";
+			case 497:
+				return "Yellow";
+			case 498:
+				return case9();
+			case 499:
+				special10 = true;
+				return "Nothing";
+			default:
+				return "Error";
+			}
+		}
+	}
+
+	private string case2(){
+		ArrayList letters = new ArrayList ();
+
+		foreach (string indicator in BombInfo.GetIndicators()) {
+			foreach (char letter in indicator) {
+				if ("CHAINDESTRUO".Contains (letter) && !letters.Contains (letter)) {
+					letters.Add (letter);
+					if (letters.Count == 3) {
+						return "Green";
+					}
+				}
+			}
+		}
+
+		return "Red";
+	}
+
+	private string case3(){
+		count = BombInfo.GetPortPlates ().Max (x => x.Length);
+
+		if (count >= 2)
+			return "Green";
+		else if (count == 1)
+			return "Blue";
+		else if (count == 0)
+			return "Yellow";
+		else
+			return "Red";
+	}
+
+	private string case9(){
+		bool spanish = false, french = false, japanese = false;
+
+		foreach (char letter in BombInfo.GetIndicators().Join("")) {
+			if (!spanish && "SPANISH".Contains (letter))
+				spanish = true;
+			if (!french && "FRENCH".Contains (letter))
+				french = true;
+			if (!japanese && "JAPANESE".Contains (letter))
+				japanese = true;
+			if (spanish && french && japanese)
+				return "Green";
+		}
+
+		return "Red";
+	}
+
+	protected void Update(){
+		if (!active) {
+			return;
+		}
+
+		if (!phraseText.text.Equals (currentPhrase)) {
+			phraseText.text = currentPhrase;
+		}
+
+		if (nums [phase] >= 490 && phraseText.color != Color.cyan) {
+			phraseText.color = Color.cyan;
+		} else if (nums [phase] < 490 && phraseText.color != Color.yellow) {
+			phraseText.color = Color.yellow;
+		}
+
+		if (special10 && BombInfo.GetSolvedModuleNames().Count == BombInfo.GetSolvableModuleNames().Count-1) {
+			BombModule.HandlePass ();
+			Audio.PlaySoundAtTransform(win, transform);
+			active = false;
+			Debug.Log ("[Simon's Satire #" + number + "] Module defused. Simon is impressed.");
+		}
+	}
+
 	protected bool ButtonPress(string color)
 	{
 		validateInput (color);
 		return false;
 	}
 
-    protected bool LeftPress()
+	protected bool ArrowPress(string button, string text)
     {
 		if (phrasesList [nums [phase]].IndexOf("SPLIT") != -1) { //only continue if phrase is one that requires 2 pages
 			string edit = phrasesList [nums [phase]];
-			currentPhrase = edit.Substring (0, edit.IndexOf ("SPLIT")); //display up to SPLIT
-			pageText.text = "1/2";
-		}
-		return false;
-    }
 
-    protected bool RightPress()
-    {
-		if (phrasesList [nums [phase]].IndexOf("SPLIT") != -1) { //only continue if phrase is one that requires 2 pages
-			string edit = phrasesList [nums [phase]];
-			currentPhrase = edit.Substring (edit.IndexOf ("SPLIT")+5); //display after SPLIT
-			pageText.text = "2/2";
+			if (button.Equals ("left"))
+				currentPhrase = edit.Substring (0, edit.IndexOf ("SPLIT")); //display up to SPLIT
+			else
+				currentPhrase = edit.Substring (edit.IndexOf ("SPLIT")+5); //display after SPLIT
+			
+			pageText.text = text;
 		}
 		return false;
     }
@@ -321,7 +291,7 @@ public class SimonsSatireModule : MonoBehaviour
 	private void validateInput(string color){
 		//reset from previous input
 		valid = false;
-		special = "";
+		special = false;
 
 		if (!active || nums[phase] == 499)
 			return;
@@ -331,81 +301,88 @@ public class SimonsSatireModule : MonoBehaviour
 			return;
 		}
 			
-		if (specialCase)
-			special = checkSpecialCases (color); //true is successful phase finish, false is strike, Not a Special Case is self-explanatory
-		else
+		if (specialCase) {
+			special = checkSpecialCases (color);
+			if (special)
+				specialCase = false;
+		} else {
 			valid = color.Equals (inputs [sequenceNum]);
+		}
 
-		if (valid || special.Equals("True")) {
+		if (valid || special) {
 			sequenceNum++;
-			if (sequenceNum == phase+1)
+			if (sequenceNum == phase+1) //phase+1 = how many inputs are needed for a given phase
 				nextPhase ();
 
 			if(active)
 				Audio.PlaySoundAtTransform ("ButtonPress", transform);
 			
-		}else if (!valid || special.Equals("False")){
+		}else if (!valid || !special){
 			BombModule.HandleStrike ();
 			sequenceNum = 0;
 		}
 	}
 
-	private string checkSpecialCases(string color){
-		if (color.Equals ("Green") && nums[sequenceNum] == 490) { //special case 1, has to be green with a 2 in the timer
+	private bool checkSpecialCases(string color){
+		if (nums[sequenceNum] == 490 && color.Equals("Green")) { //special case 1
 			if (BombInfo.GetFormattedTime ().Contains ("2")) {
-				specialCase = false;
-				return "True";
+				return true;
 			} else {
-				return "False";
+				return false;
 			}
 		}
 
-		if (nums[sequenceNum] == 494) { //special case 5, any color except blue, or blue when seconds are 00 or seconds is anything when below a minute
-			if(inputs[sequenceNum].Equals("YellowGreenRed") && !color.Equals("Blue")){
-				specialCase = false;
+		if (nums[sequenceNum] == 494) { //special case 5
+			if(inputs[sequenceNum].Equals("YGR") && !color.Equals("Blue")){
 				inputs [sequenceNum] = color;
-				return "True";
+				return true;
 			}else if(color.Equals("Blue")){
-				if (BombInfo.GetTime () >= 60) { //1 or more minutes left
-					if (BombInfo.GetFormattedTime ().Contains ("00")) {
-						specialCase = false;
-						inputs [sequenceNum] = "Blue";
-						return "True";
-					} else {
-						return "False";
-					}
-				} else { //less than 1 minute left
-					specialCase = false;
+				if (BombInfo.GetTime () >= 60 && BombInfo.GetFormattedTime ().Contains ("00")) { //checking for 00 in timer when over 1 minute
 					inputs [sequenceNum] = "Blue";
-					return "True";
+					return true;
+				} else if (BombInfo.GetTime () < 60) { //blue is always valid when under a minute
+					inputs [sequenceNum] = "Blue";
+					return true;
+				} else {
+					return false;
 				}
 			}
 		}
 
-		if (nums[sequenceNum] == 495) { //special case 6, any color whenever if 5 solved modules, otherwise any color when less than 2 minutes remain
+		if (nums[sequenceNum] == 495) { //special case 6
 			int solved = BombInfo.GetSolvedModuleNames().Count;
 			if (solved == 5 || (solved != 5 && BombInfo.GetTime () < 120)) {
-				specialCase = false;
 				inputs [sequenceNum] = color;
-				return "True";
+				return true;
 			} else {
-				return "False";
+				return false;
 			}
 		}
 
-		return "Not a Special Case";
+		return false;
 	}
 
 	private void nextPhase(){
 		if (phase == 2) {
 			BombModule.HandlePass ();
-			Audio.PlaySoundAtTransform ("Win1", transform);
+			Audio.PlaySoundAtTransform (win, transform);
 			active = false;
+			Debug.Log ("[Simon's Satire #" + number + "] Module defused. Simon is impressed.");
 		} else {
 			++phase;
 			currentPhrase = phrasesList [nums [phase]];
 			checkSplit (currentPhrase);
 			sequenceNum = 0;
+			Debug.Log ("[Simon's Satire #" + number + "] Phase " + (phase+1) + ".\nPhrase: " + unformattedPhrases[nums[phase]]);
+		}
+	}
+
+	private void checkSplit(string phrase){
+		if (phrasesList [nums [phase]].IndexOf("SPLIT") != -1) {
+			currentPhrase = currentPhrase.Substring (0, currentPhrase.IndexOf ("SPLIT"));
+			pageText.text = "1/2";
+		} else {
+			pageText.text = "";
 		}
 	}
 }
