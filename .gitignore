@@ -5,6 +5,12 @@
 /Library/
 /UnityPackageManager/
 /obj/
+/Assets/Editor/
+/Assets/Examples/
+/Assets/Plugins/
+/Assets/RoyalFlush/
+/Assets/Scripts/
+/Assets/TestHarness/
 
 *.csproj
 *.sln
