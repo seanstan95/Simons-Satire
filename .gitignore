@@ -1,17 +1,7 @@
-/[Bb]uild/
-/.vs/
-/Temp/
-/ProjectSettings/
 /Library/
+/ProjectSettings/
+/Temp/
 /UnityPackageManager/
-/obj/
-/Assets/Editor/
-/Assets/Examples/
-/Assets/Plugins/
-/Assets/RoyalFlush/
-/Assets/Scripts/
-/Assets/TestHarness/
-
-*.csproj
-*.sln
-*.userprefs
+/Visual Studio/
+/Assets/Satire/Resources-Manual/Manual.pdf
+/Assets/Satire/Resources-Manual/Manual.pdf.meta
