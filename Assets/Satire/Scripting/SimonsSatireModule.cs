@@ -62,7 +62,6 @@ public class SimonsSatireModule : MonoBehaviour
 
 		//DETERMINING RANDOM PHRASES + WIN SOUND
 		GenerateRandomStuff();
-		randomNums[0] = 499;
 
 		//DETERMINING COLOR INPUTS
 		for (int i = 0; i < 3; ++i)
