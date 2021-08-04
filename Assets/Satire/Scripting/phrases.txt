@@ -6,12 +6,12 @@ I have a vowel, does that mean Curly brace. I need big or small numbers for rand
 I am voting for Bernie &.
 I am voting for Bernie Ampersanders.
 I am voting for Bernie &ers.
-Actually, let's save this module for last so I can finish off the back of the bomb. In cryptography, I have a one.. two.. three.. four.. five.. six word sentence.
-Actually, let's save this module for last so I can finish off the back of the bomb. In cryptography, I have a one. two.. three... four.... five..... six word sentence.
-Actually, let's save this module for last so I can finish off the back of the bomb. In cryptography, I have a one... two... three... four... five... six word sentence.
-Actually, let's save this\nmodule for last so I can\nfinish off the back of\nthe bomb. In\ncryptography, I have a\none.. two.. three..\nfour.. five.. six word\nsentence.SPLITBut there is an ellipses\nbetween each number.
+Actually, let's save this module for last so I can finish off the back side of the bomb. In cryptography, I have a one.. two.. three.. four.. five.. six word sentence.
+Actually, let's save this module for last so I can finish off the back side of the bomb. In cryptography, I have a one. two.. three... four.... five..... six word sentence.
+Actually, let's save this module for last so I can finish off the back side of the bomb. In cryptography, I have a one... two... three... four... five... six word sentence.
+Actually, let's save this\nmodule for last so I can\nfinish off the back side of\nthe bomb. In\ncryptography, I have a\none.. two.. three..\nfour.. five.. six word\nsentence.SPLITBut there is an ellipses\nbetween each number.
 Actually, let's save this\nmodule for last so I can\nfinish off the back of\nthe bomb. In cryptography\nI have a 1, 2, 3, 4, 5, 6\nword sentence. There are\nalternating numbers and\nwords.
-Actually, let's save this module for last so I can finish off the back of the bomb. In cryptography, I have a one.. two.. 3.. four.. five.. 6 word sentence.
+Actually, let's save this module for last so I can finish off the back side of the bomb. In cryptography, I have a one.. two.. 3.. four.. five.. 6 word sentence.
 What is Bugs Bunny's favorite food? A carrot.
 What is Bugs Bunny's favorite food? A karot.
 What is Bugs Bunny's favorite food? A ^.
@@ -21,13 +21,13 @@ We measure #browns\npound for pound.
 We measure hashbrowns # for #. 
 We measure #browns # for #. Everything except the first pound is an ascii symbol.
 We measure #browns # for #. Everything except the second and third hash is an ascii symbol.
-I am voting for Pete Buttigieg
-I am voting for Pete Boot-edge-edge
-I am voting for Pete Boot-edge-ieg
-I am voting for Pete Baja-judge
-I am voting for Pete Baja-Blast
-I am voting for Pete Booty-jej
-I am voting for Pete Butt-edge-edge
+Pete Buttigieg
+Pete Boot-edge-edge
+Pete Boot-edge-ieg
+Pete Baja-judge
+Pete Baja-Blast
+Pete Booty-jej
+Pete Butt-edge-edge
 Hey, Michael, V-sauce here.
 Hey! Michael. V-sauce here.
 Hey. Michael, V-sauce here!
@@ -150,7 +150,7 @@ Aurora Borealis!? During this time of year, during this time of day, at this par
 Aurora Borealis!? At this time of year, at this time of day, at this part of the country, centralized entirely within your kitchen?!
 Hello, my name is Coyote Peterson, and today I'm about to enter the strike zone of the Alligator Snapping Turtle.
 Hello, my name is Coyote Peterson, and today I'm about to enter the sting zone of the Bullet Ant.
-Hello, my name is Coyote Peterson, and today I'm about to enter the sting zone of Donald Trump's wig.
+Hello, my name is Coyote Peterson, and today I'm about to enter the wrestling ring to receive a can of whoop-ass.
 But that's just a theory, a GAME theory. Thanks for watching.
 But that's just a query, a GAME query. Thanks for watching.
 But that's just a Siri, my IPHONE Siri. Thanks for watching.
@@ -266,7 +266,7 @@ The rat the cat the dog the werewolf the silver bullet pierced howled at chased 
 "This exceeding trifling\nwitling, considering\nranting criticizing\nconcerning adopting\nfitting wording being\nexhibiting transcending\nlearning was displaying,\nnotwithstandingSPLITridiculing, surpassing\nboasting swelling\nreasoning, respecting\ncorrecting erring writing,\nand touching detecting\ndeceiving arguing during\ndebating."
 "This exceeding trifling\nwitling, considering\nranting criticizing\nconcerning adopting\nfitting wording being\nexhibiting transcending\nlearning was displaying,\nnotwithstandingSPLITridiculing, surpassing,\nboasting swelling\nreasoning, respecting\ncorrecting erring writing,\nand touching detecting\ndeceiving arguing during\ndebating."
 -..  ..-  -..  .      .--  .  .  -..      .-..  --  .-  ---     
--..  ..-  -..  .    Dot dash dash\nspace dot space\ndot space dash dot dot\npause. Dot dash dot dot\nspace dash dash space dot\ndash space dash dash\ndash end.
+-..  ..-  -..  .    Dot dash\ndash space dot space\ndot space dash dot dot\npause. Dot dash dot dot\nspace dash dash space dot\ndash space dash dash\ndash end.
 -..  ..-  -..  .    Dot dash dash space dot pace dot space door-dash dot dot pause. Dot dash dot dot space dash dash space dot dash space dash dash dash end.
 -..  ..-  -..  .    Dot dash dash space dot space dot space dash dot dot pause. Dot dash dot dot space dash dash space dot dash space sign up with dashlane end.
 -..  ..-  -..  .      .--  .  .  -..      .-..  --  .-  --- But it's only in morse code.
@@ -342,8 +342,8 @@ Looks like binary?
 Looks like binary question mark
 Looks like binary? Question mark
 Looks like binary? Question mark?
-OneOneOneOneOneOneOneOneOneOne
-TenTenTenTenTenTenTenTenTenTen
+OneOneOneOneOneOneOne\nOneOneOne
+TenTenTenTenTenTenTen\nTenTenTen
 Just up the road from Llan\nfairpwllgwyngyllgogery\nchwyrndrobwllllanty\nsiliogogogoch.
 Just up the road from Llan\nfairpwllgwyngyllgogery\nchwyrndrobwllllanty\nsiliogogogadgetgoch.
 Just up the road from Llan\nfairpwllgwyngyLlgogery\nchwyrndrobwllllanty\nsiliogogogoch.
@@ -412,7 +412,7 @@ Top 5 numbers: At\nnumber 5 it's number 3,\nbut at number 4 it's\nnumber 5. Comi
 Top 5 numbers: At\nnumber 5 it's number 4,\nbut at number 4 it's\nnumber 3. Coming in at\nnumber 3 is number 5.\nComing in at 2 is\n4 again.SPLITAt number 1 there\ncan only be 1 number\n1, and that 1 number\nis number 2.
 Top 5 numbers: At\nnumber 5 it's number 1,\nbut at number 4 it's\nnumber 1. Coming in at\nnumber 3 is number 1.\nComing in at 2 is\n1 again.SPLITAt number 1 there\ncan only be 1 number\n1, and that 1 number\nis number fiiiiiive.
 Top 5 numbers: At\nnumber five it's number\nthree, but at number four\nit's number five. Coming\nin at number three is\nnumber four. Coming in\nat two is three again.SPLITAt number one there\ncan only be one number\none, and that one\nnumber is number two.
-Top 5 numbers: At\nnumber five it's number 3,\nbut at number four it's\nnumber 5. Coming in at\nnumber three is number 4.\nComing in at two is 3 again.SPLITAt number one there\ncan only be 1 number\none, and that 1 number\nis number two.
+Top 5 numbers: At\nnumber five it's number 3,\nbut at number four it's\nnumber 5. Coming in at\nnumber three is number 4.\nComing in at two is 3\nagain. At number one there\ncan only be 1 numberSPLITone, and that 1 number\nis number two.
 Top 5 numbers: At\nnumber 5 it's number\nthree, but at number 4\nit's number five. Coming\nin at number 3 is number\nfour. Coming in at 2 is\nthree again.SPLITAt number 1 there can\nonly be one number 1,\nand that one number is\nnumber 2.
 Top 5 numbers: At # 5 it's # 1, but at # 4 it's # 1. Coming in at # 3 is # 1. Coming in at 2 is 1 again. At # 1 there can only be 1 # 1, and that 1 # is # fiiiiiive.
 Top 5 numbers: At\nnumber 5 it's number 1,\nbut at number 4 it's number\n1. Coming in at number 3\nis number 1. Coming in at\n2 is 1 again.SPLITAt number 1 there can\nonly be 1 number 1, and\nthat 1 number is a\ngoogolplex.

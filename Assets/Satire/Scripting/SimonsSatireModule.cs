@@ -138,7 +138,7 @@ public class SimonsSatireModule : MonoBehaviour
 
 	private void GenerateRandomStuff()
 	{
-		List<int> ranges = new List<int>() { phrasesList.Count - 9, phrasesList.Count, phrasesList.Count };
+		List<int> ranges = new List<int>() { phrasesList.Count, phrasesList.Count-9, phrasesList.Count-9 };
 		while (randomNums.Count < 3)
 		{
 			int a = UnityEngine.Random.Range(0, ranges[randomNums.Count]);
@@ -266,7 +266,7 @@ public class SimonsSatireModule : MonoBehaviour
 			phraseText.color = Color.yellow;
 
 		//Continual checking of timer being in the xx:59-xx:50 range for special case 6
-		if (BombInfo.GetFormattedTime()[BombInfo.GetFormattedTime().Length - 2].Equals('5'))
+		if((int)BombInfo.GetTime() % 60 >= 50)
 		{
 			if (!special6)
 				special6 = true;
@@ -301,11 +301,11 @@ public class SimonsSatireModule : MonoBehaviour
 
 	protected bool ArrowPress(string button, string text)
 	{
-		if (currentPhrase.IndexOf("SPLIT") != -1) //only continue if phrase is one that requires 2 pages
+		if (phrasesList[randomNums[phase]].IndexOf("SPLIT") != -1) //only continue if phrase is one that requires 2 pages
 		{
 			string edit = phrasesList[randomNums[phase]];
 
-			if (button.Equals("left"))
+			if (button.Equals("Left"))
 				currentPhrase = edit.Substring(0, edit.IndexOf("SPLIT")); //display up to SPLIT
 			else
 				currentPhrase = edit.Substring(edit.IndexOf("SPLIT") + 5); //display after SPLIT
@@ -394,7 +394,7 @@ public class SimonsSatireModule : MonoBehaviour
 		if (randomNums[sequenceNum] == 499) //special case 10
 		{
 			//Special case 10 finishes automatically in Update() OR it can finish here by pressing blue with a 0 in the seconds timer
-			if (color.Equals("Blue") && BombInfo.GetFormattedTime()[BombInfo.GetFormattedTime().Length - 1].Equals('0'))
+			if (color.Equals("Blue") && (int)BombInfo.GetTime() % 10 == 0)
 				return true;
 		}
 
@@ -406,7 +406,7 @@ public class SimonsSatireModule : MonoBehaviour
 		case6Option2 = true; //ensures phase doesn't advance when this option is taken
 
 		//Check if in the correct time range (only when seconds is between 50-59, aka xx:5x)
-		if (!BombInfo.GetFormattedTime()[BombInfo.GetFormattedTime().Length - 2].Equals('5'))
+		if(!special6)
 			return false;
 
 		//Increment counters for each
@@ -451,7 +451,7 @@ public class SimonsSatireModule : MonoBehaviour
 			currentPhrase = phrasesList[randomNums[phase]];
 			CheckSplit();
 			sequenceNum = 0;
-			Debug.Log("[Simon's Satire #" + thisNum + "] Phase " + (phase + 1) + ".\nPhrase: " + unformattedPhrases[randomNums[phase]]);
+            Debug.Log("[Simon's Satire #" + thisNum + "] Phase " + (phase + 1) + ". \"Phrase: " + unformattedPhrases[randomNums[phase]] + "\"");
 		}
 	}
 
