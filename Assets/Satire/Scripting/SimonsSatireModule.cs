@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using System.IO;
 using KModkit;
+using System.Text.RegularExpressions;
 
 public class SimonsSatireModule : MonoBehaviour
 {
@@ -472,5 +473,75 @@ public class SimonsSatireModule : MonoBehaviour
 		}
 		else
 			pageText.text = "";
+	}
+	
+	//twitch plays
+    #pragma warning disable 414
+    private readonly string TwitchHelpMessage = @"To press the left/right button, use !{0} left/right | To press the colored buttons, use !{0} press red/blue/yellow/green (Use can use one letter for the color command, and the command can be chained. Example !{0} press red y yellow";
+    #pragma warning restore 414
+	
+	string[] ValidColors = {"red", "blue", "yellow", "green", "r", "b", "y", "g"};
+    
+    IEnumerator ProcessTwitchCommand(string command)
+    {
+		string[] parameters = command.Split(' ');
+		if (Regex.IsMatch(command, @"^\s*left\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+		{
+			yield return null;
+			LeftArrow.OnInteract();
+		}
+		
+		if (Regex.IsMatch(command, @"^\s*right\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+		{
+			yield return null;
+			RightArrow.OnInteract();
+		}
+		
+		if (Regex.IsMatch(parameters[0], @"^\s*press\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+		{
+			yield return null;
+			if (parameters.Length < 2)
+			{
+				yield return "sendtochaterror Parameter length invalid. Command ignored.";
+				yield break;
+			}
+			
+			for (int x = 1; x < parameters.Length; x++)
+			{
+				if (!ValidColors.Contains(parameters[x].ToLower()))
+				{
+					yield return "sendtochaterror Command contains an invalid color. Command ignored.";
+					yield break;
+				}
+			}
+			
+			for (int y = 1; y < parameters.Length; y++)
+			{
+				switch (parameters[y].ToLower())
+				{
+					case "red":
+					case "r":
+						RedButton.OnInteract();
+						Debug.Log("RED");
+						break;
+					case "blue":
+					case "b":
+						BlueButton.OnInteract();
+						Debug.Log("BLUE");
+						break;
+					case "yellow":
+					case "y":
+						YellowButton.OnInteract();
+						Debug.Log("YELLOW");
+						break;
+					case "green":
+					case "g":
+						GreenButton.OnInteract();
+						Debug.Log("GREEN");
+						break;
+				}
+				yield return new WaitForSecondsRealtime(0.1f);
+			}
+		}
 	}
 }
