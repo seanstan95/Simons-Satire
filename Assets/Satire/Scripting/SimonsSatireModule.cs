@@ -477,7 +477,7 @@ public class SimonsSatireModule : MonoBehaviour
 	
 	//twitch plays
     #pragma warning disable 414
-    private readonly string TwitchHelpMessage = @"To press the left/right button, use !{0} left/right | To press the colored buttons, use !{0} press red/blue/yellow/green (Use can use one letter for the color command, and the command can be chained. Example !{0} press red y yellow";
+    private readonly string TwitchHelpMessage = @"To press the left/right button, use !{0} left/right | To press the colored buttons, use !{0} press red/blue/yellow/green (Use can use one letter for the color command, and the command can be chained. Example !{0} press red y yellow | To press a colored button at a certain time, use the command !{0} press red/blue/yellow/green at [00-59]";
     #pragma warning restore 414
 	
 	string[] ValidColors = {"red", "blue", "yellow", "green", "r", "b", "y", "g"};
@@ -498,49 +498,111 @@ public class SimonsSatireModule : MonoBehaviour
 		}
 		
 		if (Regex.IsMatch(parameters[0], @"^\s*press\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
-		{
+        {
 			yield return null;
-			if (parameters.Length < 2)
+			if (Regex.IsMatch(parameters[2], @"^\s*at\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
 			{
-				yield return "sendtochaterror Parameter length invalid. Command ignored.";
-				yield break;
-			}
-			
-			for (int x = 1; x < parameters.Length; x++)
-			{
-				if (!ValidColors.Contains(parameters[x].ToLower()))
+				if (parameters.Length != 4)
+				{
+					yield return "sendtochaterror Parameter length invalid. Command ignored.";
+					yield break;
+				}
+
+				if (!ValidColors.Contains(parameters[1].ToLower()))
 				{
 					yield return "sendtochaterror Command contains an invalid color. Command ignored.";
 					yield break;
 				}
-			}
-			
-			for (int y = 1; y < parameters.Length; y++)
-			{
-				switch (parameters[y].ToLower())
+
+				int Out2;
+				if (!int.TryParse(parameters[3], out Out2))
+				{
+					yield return "sendtochaterror The timer number given is not valid. Command ignored.";
+					yield break;
+				}
+
+				if (Out2 < 0 || Out2 > 59)
+				{
+					yield return "sendtochaterror The timer number given is not 00-59. Command ignored.";
+					yield break;
+				}
+
+				if (parameters[3].Length != 2)
+				{
+					yield return "sendtochaterror The timer length must be 2. Command ignored.";
+					yield break;
+				}
+
+				while (((int)BombInfo.GetTime()) % 60 != Out2)
+				{
+					 yield return "trycancel The command is cancelled due to a cancel request.";
+				}
+				
+				switch (parameters[1].ToLower())
 				{
 					case "red":
 					case "r":
 						RedButton.OnInteract();
-						Debug.Log("RED");
 						break;
 					case "blue":
 					case "b":
 						BlueButton.OnInteract();
-						Debug.Log("BLUE");
 						break;
 					case "yellow":
 					case "y":
 						YellowButton.OnInteract();
-						Debug.Log("YELLOW");
 						break;
 					case "green":
 					case "g":
 						GreenButton.OnInteract();
-						Debug.Log("GREEN");
+						break;
+					default:
 						break;
 				}
-				yield return new WaitForSecondsRealtime(0.1f);
+			}
+			
+			else
+			{
+				if (parameters.Length < 2)
+				{
+					yield return "sendtochaterror Parameter length invalid. Command ignored.";
+					yield break;
+				}
+				
+				for (int x = 1; x < parameters.Length; x++)
+				{
+					if (!ValidColors.Contains(parameters[x].ToLower()))
+					{
+						yield return "sendtochaterror Command contains an invalid color. Command ignored.";
+						yield break;
+					}
+				}
+				
+				for (int y = 1; y < parameters.Length; y++)
+				{
+					switch (parameters[y].ToLower())
+					{
+						case "red":
+						case "r":
+							RedButton.OnInteract();
+							break;
+						case "blue":
+						case "b":
+							BlueButton.OnInteract();
+							break;
+						case "yellow":
+						case "y":
+							YellowButton.OnInteract();
+							break;
+						case "green":
+						case "g":
+							GreenButton.OnInteract();
+							break;
+						default:
+							break;
+					}
+					yield return new WaitForSecondsRealtime(0.1f);
+				}
 			}
 		}
 	}
