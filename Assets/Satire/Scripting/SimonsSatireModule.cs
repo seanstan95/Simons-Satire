@@ -500,13 +500,9 @@ public class SimonsSatireModule : MonoBehaviour
 		if (Regex.IsMatch(parameters[0], @"^\s*press\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
 			yield return null;
-			if (Regex.IsMatch(parameters[2], @"^\s*at\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+			
+			if (parameters.Length == 4 && Regex.IsMatch(parameters[2], @"^\s*at\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
 			{
-				if (parameters.Length != 4)
-				{
-					yield return "sendtochaterror Parameter length invalid. Command ignored.";
-					yield break;
-				}
 
 				if (!ValidColors.Contains(parameters[1].ToLower()))
 				{
@@ -573,7 +569,7 @@ public class SimonsSatireModule : MonoBehaviour
 				{
 					if (!ValidColors.Contains(parameters[x].ToLower()))
 					{
-						yield return "sendtochaterror Command contains an invalid color. Command ignored.";
+						yield return "sendtochaterror Command contains an invalid color, or the command is not valid at all. Command ignored.";
 						yield break;
 					}
 				}
