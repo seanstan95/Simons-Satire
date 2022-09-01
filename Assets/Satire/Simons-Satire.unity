@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4582718390866992, guid: 653da79dae4a50c439196c2c189956f8, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 653da79dae4a50c439196c2c189956f8, type: 2}
@@ -192,12 +192,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 439642, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}
       propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114848120511536268, guid: 8814ea52310d2614a9feda02ec355ae4,
-        type: 2}
-      propertyPath: BombSize
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}
