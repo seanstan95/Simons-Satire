@@ -78,6 +78,7 @@
      <Compile Include="Assets\Satire\TestHarness\Widgets\SerialNumber.cs" />
      <Compile Include="Assets\Satire\TestHarness\Widgets\TwoFactorWidget.cs" />
      <Compile Include="Assets\Satire\TestHarness\Widgets\Widget.cs" />
+     <None Include="Assets\Satire\TestHarness\Widgets\Prefabs\Ports\RJ-45\Plastic.obj.txt" />
      <None Include="Assets\Satire\Scripting\phrases.txt" />
      <None Include="Assets\Satire\Shaders\KT_Mobile-Diffuse.shader" />
      <None Include="Assets\Satire\Scripting\colors.txt" />
