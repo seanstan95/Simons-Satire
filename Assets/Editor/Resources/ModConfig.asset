@@ -15,8 +15,8 @@ MonoBehaviour:
   title: Simon's Satire
   author: PhoenixAki, Ava Watanabe
   description: "Simon has been forced to listen to you repeat some \"K\"razy phrases
-    to your manual expert all day. He wants a turn.\r\n\r\nManual (Word Doc): https://1drv.ms/w/s!AmH_oxYrDEdwhnoS7eCgMHDa0ima?e=ucSClG\r\nManual
-    (PDF): https://1drv.ms/b/s!AmH_oxYrDEdwhn2I1PjyADWhyV2S\r\nGitHub Repo: https://github.com/seanstan95/Simons-Satire"
-  version: 1.04
+    to your manual expert all day. He wants a turn.\r\n\r\nManual: https://ktane.timwi.de/HTML/Simon%27s%20Satire.html\nGitHub
+    Repo: https://github.com/seanstan95/Simons-Satire"
+  version: 1.07.2
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 2c5dd59105e76a34bb3abd168c13811a, type: 3}
