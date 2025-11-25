@@ -221,7 +221,12 @@ public class SimonsSatireModule : MonoBehaviour
 
 	private string Case3()
 	{
-		count = BombInfo.GetPortPlates().Max(x => x.Length);
+		IEnumerable<string[]> plates = BombInfo.GetPortPlates();
+
+		if (plates.Count() == 0) //plates is empty enumerable when there's no plates on bomb
+			return "Red";
+
+		count = plates.Max(x => x.Length);
 
 		if (count >= 2)
 			return "Green";
