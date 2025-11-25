@@ -342,10 +342,10 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2017.4.22f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="KMFramework">
- <HintPath>D:/Programming & Tech/C#/Simon's Satire/Assets/Plugins/Managed/KMFramework.dll</HintPath>
+ <HintPath>D:/Programming &amp; Tech/C#/Simon's Satire/Assets/Plugins/Managed/KMFramework.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>D:/Programming & Tech/C#/Simon's Satire/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
+ <HintPath>D:/Programming &amp; Tech/C#/Simon's Satire/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Users/Sean/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
